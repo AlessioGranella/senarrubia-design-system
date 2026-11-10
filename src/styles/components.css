@@ -1,0 +1,104 @@
+/* ============================================================================
+   S'ENA ARRUBIA — Componenti
+   Solo token semantici (var(--se-bg-*), var(--se-fg-*)), mai colori in chiaro.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- LOGO
+   Il logo a colori è un <img>: ha tre colori e non si tinge.
+   Larghezza minima forzata a 60 px (◆ p.14). */
+.se-logo { display: inline-block; flex: none; line-height: 0; }
+.se-logo img { display: block; width: max(var(--se-logo-w, 240px), var(--se-logo-min-schermo)); height: auto; }
+/* ◆ p.13 area di rispetto: l'altezza di CAMPING su ogni lato. */
+.se-logo--rispetto { padding: calc(max(var(--se-logo-w, 240px), var(--se-logo-min-schermo)) * var(--se-logo-rispetto)); }
+
+/* --------------------------------------------------------------- ICONA
+   Icone monocromatiche (sole, stelle, pittogramma al tratto) tinte via mask:
+   un SVG in <img> non eredita currentColor. Il colore arriva da `color`. */
+.se-icona {
+  display: inline-block; flex: none;
+  width: var(--se-icona-w, 48px); aspect-ratio: var(--se-icona-ratio, 1);
+  background-color: currentColor;
+  -webkit-mask: var(--se-icona-src) center / contain no-repeat;
+          mask: var(--se-icona-src) center / contain no-repeat;
+}
+
+/* --------------------------------------------------------------- ARCHI
+   ◆ copertine p.1, 4, 10, 16, 28: anelli bianchi spessi, concentrici, tagliati
+   dall'angolo della pagina. Sono la «firma» grafica delle aperture.
+   Decorativi: aria-hidden, sempre in un angolo, mai sopra un testo. */
+.se-archi { position: absolute; pointer-events: none; width: var(--se-archi-d, 320px); aspect-ratio: 1;
+  border-radius: 50%; color: var(--se-bianco);
+  background: radial-gradient(circle closest-side, transparent 34%, currentColor 34.5%, currentColor 46%,
+    transparent 46.5%, transparent 64%, currentColor 64.5%, currentColor 76%, transparent 76.5%); }
+.se-archi--singolo { background: radial-gradient(circle closest-side, transparent 64%, currentColor 64.5%, currentColor 82%, transparent 82.5%); }
+.se-archi--bs { left: 0; bottom: 0; translate: -50% 50%; }
+.se-archi--ad { right: 0; top: 0; translate: 50% -50%; }
+
+/* -------------------------------------------------------------- FASCIA
+   Fascia a tutta larghezza. Il padding orizzontale sta sul wrapper interno,
+   così i bordi sinistri di fasce diverse combaciano. */
+.se-fascia { position: relative; overflow: hidden; background: var(--se-bg); color: var(--se-fg); }
+.se-fascia__inner { position: relative; max-width: var(--se-container); margin: 0 auto;
+  padding: var(--se-space-20) var(--se-gutter); }
+.se-fascia--sabbia { background: var(--se-bg-soft); }
+.se-fascia--acqua  { background: var(--se-bg-sky); }
+.se-fascia--minio  { background: var(--se-bg-brand); }
+.se-fascia--cotto  { background: var(--se-bg-dark); }
+.se-fascia--cielo  { background: var(--se-bg-accent); }
+/* Su minio e cotto il testo è bianco. La regola su `p`/titoli va ripetuta:
+   la regola globale batte il colore ereditato. */
+.se-fascia--minio, .se-fascia--cotto,
+:is(.se-fascia--minio, .se-fascia--cotto) :is(h1, h2, h3, h4, p, .se-lead, .se-etichetta) { color: var(--se-on-brand); }
+/* Su sabbia il titolo grande resta minio solo se ≥ 24 px; il resto in cotto. */
+.se-fascia--sabbia .se-etichetta { color: var(--se-cotto); }
+/* Su cielo: testo nero, titoli cotto (mai bianco: 1,9:1). */
+.se-fascia--cielo :is(h1, .se-etichetta) { color: var(--se-cotto); }
+.se-fascia--centrata .se-fascia__inner { text-align: center; }
+.se-fascia--centrata p { margin-inline: auto; }
+
+/* ------------------------------------------------------------- BOTTONE
+   Derivato: il brandbook non ha UI. Pillola minio, testo maiuscolo spaziato. */
+.se-bottone {
+  display: inline-flex; align-items: center; gap: var(--se-space-2);
+  font-family: var(--se-font); font-weight: var(--se-fw-bold); font-size: var(--se-fs-label);
+  text-transform: uppercase; letter-spacing: var(--se-ls-label); text-decoration: none;
+  padding: 15px 28px; border-radius: var(--se-radius-pill); border: 2px solid var(--se-bg-dark);
+  background: var(--se-bg-dark); color: var(--se-on-brand); cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.se-bottone:hover { background: var(--se-bg-brand); border-color: var(--se-bg-brand); }
+.se-bottone--linea { background: transparent; color: var(--se-fg-title); }
+.se-bottone--linea:hover { background: var(--se-bg-dark); color: var(--se-on-brand); border-color: var(--se-bg-dark); }
+:is(.se-fascia--minio, .se-fascia--cotto) .se-bottone { background: var(--se-bianco); color: var(--se-cotto); border-color: var(--se-bianco); }
+:is(.se-fascia--minio, .se-fascia--cotto) .se-bottone:hover { background: var(--se-sabbia); border-color: var(--se-sabbia); }
+:is(.se-fascia--minio, .se-fascia--cotto) .se-bottone--linea { background: transparent; color: var(--se-bianco); }
+
+/* ------------------------------------------------------------ CHIP
+   Servizi e caratteristiche (piazzola, posti letto, animali ammessi…). */
+.se-chip { display: inline-flex; align-items: center; gap: 6px; font-size: var(--se-fs-caption);
+  font-weight: var(--se-fw-semi); letter-spacing: .04em; padding: 5px 12px; border-radius: var(--se-radius-pill);
+  background: var(--se-bg-sky); color: var(--se-cotto); }
+
+/* ------------------------------------------------- SCHEDA SISTEMAZIONE
+   Foto, etichetta tipologia, nome, caratteristiche, prenota. */
+.se-scheda { display: grid; grid-template-rows: auto 1fr; background: var(--se-bianco); color: var(--se-fg);
+  border-radius: var(--se-radius-md); overflow: hidden; box-shadow: var(--se-shadow-sm);
+  border: 1px solid var(--se-border-soft); }
+.se-scheda__foto { aspect-ratio: 4 / 3; background: var(--se-sabbia); }
+.se-scheda__foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.se-scheda__corpo { display: grid; align-content: start; gap: var(--se-space-3); padding: var(--se-space-6); }
+.se-scheda__corpo .se-etichetta { margin: 0; }
+.se-scheda__nome { font-size: var(--se-fs-h3); font-weight: var(--se-fw-bold); color: var(--se-fg-title); margin: 0; line-height: 1.15; }
+.se-scheda__testo { font-size: var(--se-fs-small); margin: 0; }
+.se-scheda__dati { display: flex; flex-wrap: wrap; gap: var(--se-space-2); margin: 0; padding: 0; list-style: none; }
+.se-scheda__piede { display: flex; justify-content: space-between; align-items: center; gap: var(--se-space-4);
+  margin-top: var(--se-space-2); padding-top: var(--se-space-4); border-top: 1px solid var(--se-border-soft); }
+.se-scheda__prezzo { font-size: var(--se-fs-small); }
+.se-scheda__prezzo strong { font-size: var(--se-fs-h4); color: var(--se-fg-title); }
+
+/* ------------------------------------------------------- TESTATA SITO */
+.se-testata { display: flex; align-items: center; justify-content: space-between; gap: var(--se-space-6);
+  padding: var(--se-space-4) var(--se-gutter); background: var(--se-bianco); border-bottom: 1px solid var(--se-border-soft); }
+.se-testata nav { display: flex; gap: var(--se-space-6); flex-wrap: wrap; }
+.se-testata nav a { color: var(--se-fg); text-decoration: none; font-weight: var(--se-fw-semi); font-size: var(--se-fs-small); }
+.se-testata nav a:hover { color: var(--se-fg-accent); }
