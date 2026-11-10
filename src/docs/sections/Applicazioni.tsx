@@ -26,6 +26,18 @@ export function Applicazioni() {
         ]} />
       </section>
       <section className="dx-section">
+        <h2>Flyer e mappa 2025</h2>
+        <p>
+          ◇ Gli stampati in uso: flyer a 6 ante (IT/EN, con QR) e mappa del campeggio in A3 e 100×70.
+          Sono la fonte delle icone dei servizi. Sono composti in Open Sans: i nuovi materiali passano a Raleway (★).
+        </p>
+        <GrigliaImmagini voci={[
+          e('mappa-a3', 'Mappa A3: illustrazione, zone 100–400, legenda dei servizi'),
+          e('flyer-fronte', 'Flyer, fronte: benvenuto, pet, esperienze, ristorante, bar e piscina'),
+          e('flyer-retro', 'Flyer, retro: mappa, informazioni, raccolta differenziata'),
+        ]} />
+      </section>
+      <section className="dx-section">
         <h2>Cosa se ne ricava</h2>
         <ul>
           <li>Sui gadget il segno più usato è il <strong>sole</strong>, da solo, in un colore.</li>

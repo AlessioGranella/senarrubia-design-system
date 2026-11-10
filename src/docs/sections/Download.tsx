@@ -3,7 +3,7 @@ import { asset } from '../../asset';
 const PACCHETTI: { file: string; titolo: string; testo: string }[] = [
   { file: 'senarrubia-kit-completo', titolo: 'Kit completo', testo: 'Logo, icone e Raleway in un solo file. Il pacchetto da dare a chi lavora sul brand.' },
   { file: 'senarrubia-logo', titolo: 'Logo', testo: '5 versioni in SVG e PNG trasparente 2048 px, più la versione mono in currentColor.' },
-  { file: 'senarrubia-icone', titolo: 'Icone', testo: 'Sole (7 colori), pittogramma a colori e al tratto, tre stelle (7 colori), 5 immagini profilo. SVG + PNG.' },
+  { file: 'senarrubia-icone', titolo: 'Icone', testo: 'Sole (7 colori), pittogramma, tre stelle (7 colori), 5 immagini profilo, 24 icone dei servizi, 6 della raccolta differenziata. SVG + PNG.' },
   { file: 'senarrubia-raleway', titolo: 'Raleway', testo: 'Font variabile (normale e corsivo), 18 pesi statici, licenza OFL.' },
   { file: 'senarrubia-foto', titolo: 'Fotografie', testo: 'Selezione di 18 foto a 1600 px.' },
   { file: 'senarrubia-originali-stampa', titolo: 'Originali per la stampa', testo: 'I file vettoriali consegnati dal cliente, in PDF ed EPS. Per tipografie e fornitori.' },

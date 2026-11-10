@@ -1,6 +1,7 @@
 import { asset } from '../../asset';
 import { palette, type NomeColore } from '../../tokens';
 import { Icona } from '../../components/Icona';
+import { IconaServizio, SERVIZI, RIFIUTI } from '../../components/IconaServizio';
 import { Codice } from '../Codice';
 import { Tessera } from '../Tessera';
 
@@ -31,7 +32,8 @@ export function Icone() {
             Nessuna icona è ridisegnata. Il sole viene dai file del cliente (<code>Simbolo_Sole</code>);
             pittogramma e stelle sono ritagliati dal vettoriale del logo con <code>npm run marchio</code>
             (<code>scripts/marchio.py</code>), senza toccare i tracciati. Le versioni <em>Mono</em> sono
-            in <code>currentColor</code>, per tingerle da CSS.
+            in <code>currentColor</code>, per tingerle da CSS. Le icone dei servizi sono lette
+            tracciato per tracciato dagli esecutivi di stampa con <code>scripts/icone_mappa.py</code>.
           </p>
         </div>
       </section>
@@ -82,6 +84,31 @@ export function Icone() {
         </div>
       </section>
 
+
+      <section className="dx-section">
+        <h2>Servizi del campeggio</h2>
+        <p>
+          ◇ Dalla legenda della mappa (A3 e 100×70, 2025). Illustrazioni al tratto cotto con campiture
+          tenui: si usano nei loro colori, senza ritingerle, su fondo bianco, sabbia o acqua.
+          SVG vettoriale + PNG 512 px.
+        </p>
+        <div className="dx-griglia dx-griglia--icone">
+          {Object.entries(SERVIZI).map(([id, nome]) => (
+            <Tessera key={id} percorso={`brand/icone/servizi/${id}`} titolo={nome} fondo={palette.bianco} />
+          ))}
+        </div>
+      </section>
+
+      <section className="dx-section">
+        <h2>Raccolta differenziata</h2>
+        <p>◇ Dal flyer 2025 (retro, colonna «Raccolta differenziata»).</p>
+        <div className="dx-griglia dx-griglia--icone">
+          {Object.entries(RIFIUTI).map(([id, nome]) => (
+            <Tessera key={id} percorso={`brand/icone/servizi/${id}`} titolo={nome} fondo={palette.bianco} />
+          ))}
+        </div>
+      </section>
+
       <section className="dx-section">
         <h2>Immagini profilo</h2>
         <p>◆ p.14. Quadrate 1080 × 1080, pronte per Instagram, Facebook, Google Business, WhatsApp.</p>
@@ -101,11 +128,13 @@ export function Icone() {
             <li>Sole per social, segnaletica, gadget, favicon, elementi decorativi (◆ p.27: tazze, tote bag, post).</li>
             <li>Un solo colore della palette per icona, scelto per contrasto col fondo.</li>
             <li>Il sole come «firma» piccola in un angolo delle foto social (◆ p.27).</li>
+            <li>Icone dei servizi per mappe, segnaletica, schede sistemazione, pagine servizi del sito.</li>
           </ul></div>
           <div className="dx-dont"><h4>No</h4><ul>
             <li>Riempire il sole, cambiarne il numero di raggi o lo spessore.</li>
             <li>Sole bianco su sabbia o su acqua, sole sabbia su bianco piccolo: non si vede.</li>
-            <li>Mescolare queste icone con set di icone generici (Material, Font Awesome) nello stesso stile.</li>
+            <li>Mescolare queste icone con set generici (Material, Font Awesome). Se manca un servizio, si disegna nello stesso stile, non si prende altrove.</li>
+            <li>Ritingere le icone dei servizi in un colore solo: perdono le campiture.</li>
           </ul></div>
         </div>
       </section>
@@ -117,9 +146,17 @@ export function Icone() {
           <Icona nome="sole" colore="cielo" larghezza={64} />
           <Icona nome="pittogramma" colore="cotto" larghezza={64} />
           <Icona nome="stelle" colore="minio" larghezza={64} />
+          <IconaServizio nome="piscina" dimensione={56} />
+          <IconaServizio nome="ristorante" dimensione={56} />
         </div>
+        <ul className="se-servizi" style={{ marginBottom: 32 }}>
+          {(['casa-mobile', 'piscina', 'ristorante', 'spiaggia-cani'] as const).map(n => (
+            <li key={n}><IconaServizio nome={n} dimensione={36} decorativa />{SERVIZI[n]}</li>
+          ))}
+        </ul>
         <Codice>{`<⟦Icona⟧ nome="sole" colore="minio" larghezza={64} />
 <⟦Icona⟧ nome="stelle" colore="cotto" larghezza={48} decorativa />
+<⟦IconaServizio⟧ nome="piscina" dimensione={48} />   {/* 24 servizi + 6 rifiuti */}
 
 /* oppure solo CSS */
 .marcatore { background: currentColor; color: var(--se-minio);

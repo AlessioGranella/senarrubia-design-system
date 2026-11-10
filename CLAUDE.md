@@ -10,7 +10,7 @@ Design system di **S'Ena Arrubia Camping Village** (Arborea), cliente DROP. Trad
 - Asset: `public/brand/`. Logo e icone li genera `npm run marchio` dagli SVG del cliente;
   gli zip li genera `scripts/pacchetti.sh` (pre dev/build) e non vanno in repo. `originali/` = PDF+EPS del cliente (gli .ai restano fuori).
 - Online: https://alessiogranella.github.io/senarrubia-design-system/ (deploy a ogni push su main).
-  gli zip li genera `scripts/pacchetti.sh` (pre dev/build) e non vanno in repo.
+- Icone servizi (24) e rifiuti (6): `scripts/icone_mappa.py` le legge dagli esecutivi `../S'EA_Mappa A3/` e `../Flyer/` → `public/brand/icone/servizi/`.
 
 ## Regole non negoziabili
 1. Palette ◆: minio #D85844, sabbia #EBC6A4 (primari), cotto #A4382E, bianco (secondari), acqua #D9EEF6, cielo #79CADB (terziari). Nero solo logo mono + testo corrente.
@@ -19,7 +19,7 @@ Design system di **S'Ena Arrubia Camping Village** (Arborea), cliente DROP. Trad
 4. Il logo si usa intero, dai file di `public/brand/loghi/`, nella versione indicata per il fondo (◆ p.19-20).
    Mai logotipo senza pittogramma (◆ p.11). Min 60 px / 2 cm (◆ p.14). Rispetto = altezza di CAMPING.
 5. Minio non regge testo piccolo (3,9:1). Mai testo bianco su cielo o sabbia.
-6. Icone: solo sole/pittogramma/stelle del brand, mai ridisegnate né mescolate a set generici.
+6. Icone: solo quelle del brand (sole, pittogramma, stelle + servizi della mappa), mai ridisegnate né mescolate a set generici. Le icone servizi sono multi-tono: `<img>`, non si ritingono.
 
 ## Gotcha
 - Gli SVG di Illustrator hanno i colori in `<style>` (.cls-N): PyMuPDF li ignora. `marchio.py` li porta in `fill` inline.

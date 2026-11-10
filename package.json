@@ -16,7 +16,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "marchio": "python3 scripts/marchio.py \"../Sito/Brand/CAMPING VILLAGE/SVG\"",
+    "marchio": "python3 scripts/marchio.py \"../Sito/Brand/CAMPING VILLAGE/SVG\" && python3 scripts/icone_mappa.py",
     "prebuild": "sh scripts/pacchetti.sh",
     "predev": "sh scripts/pacchetti.sh"
   },

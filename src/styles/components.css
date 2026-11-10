@@ -102,3 +102,11 @@
 .se-testata nav { display: flex; gap: var(--se-space-6); flex-wrap: wrap; }
 .se-testata nav a { color: var(--se-fg); text-decoration: none; font-weight: var(--se-fw-semi); font-size: var(--se-fs-small); }
 .se-testata nav a:hover { color: var(--se-fg-accent); }
+
+/* ----------------------------------------------------- ICONA SERVIZIO
+   ◇ Illustrazioni della legenda della mappa: multi-tono, non si tingono. */
+.se-icona-servizio { display: inline-block; flex: none; object-fit: contain; vertical-align: middle; }
+.se-servizi { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--se-space-4) var(--se-space-6);
+  margin: 0; padding: 0; list-style: none; }
+.se-servizi li { display: flex; align-items: center; gap: var(--se-space-3); font-weight: var(--se-fw-semi);
+  font-size: var(--se-fs-small); color: var(--se-fg-title); }
