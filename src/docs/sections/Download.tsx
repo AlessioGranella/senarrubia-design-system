@@ -20,7 +20,7 @@ export function Download() {
       {PACCHETTI.map(p => (
         <div className="dx-pacchetto" key={p.file}>
           <div><h3>{p.titolo}</h3><p>{p.testo}</p></div>
-          <a className="se-bottone" href={asset(`brand/zip/${p.file}.zip`)} download>ZIP</a>
+          <a className="se-btn se-btn--scuro" href={asset(`brand/zip/${p.file}.zip`)} download>ZIP</a>
         </div>
       ))}
 

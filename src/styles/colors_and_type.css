@@ -61,6 +61,7 @@
   /* ----------------------------------------------- SCALA TIPOGRAFICA
      Derivata. Corpo 17 px, rapporto ~1,33. I titoli del brandbook sono
      bold, grandi, in frase (◆ «Il logo e declinazioni»). */
+  --se-fs-mega:    clamp(3.2rem, 9vw, 8.5rem);   /* titolo della hero */
   --se-fs-display: clamp(2.75rem, 5vw + 1rem, 5rem);
   --se-fs-h1:      clamp(2.25rem, 3vw + 1rem, 3.5rem);
   --se-fs-h2:      clamp(1.75rem, 2vw + 1rem, 2.5rem);
@@ -88,7 +89,8 @@
   --se-space-5: 20px;  --se-space-6: 24px;  --se-space-8: 32px;  --se-space-10: 40px;
   --se-space-12: 48px; --se-space-16: 64px; --se-space-20: 80px; --se-space-24: 96px;
 
-  --se-container: 1200px;
+  --se-container: 1320px;      /* allineato al sito (nov 2026) */
+  --se-testata-h: 88px;        /* altezza della testata del sito */
   --se-gutter: clamp(16px, 4vw, 48px);
 
   /* Angoli: morbidi come le schede colore del brandbook (◆ p.17-19). */
@@ -104,8 +106,16 @@
      Nel vettoriale: CAMPING è alta 40 su un logo largo 720 → 5,6% della larghezza. */
   --se-logo-rispetto: 0.056;
 
+  /* ------------------------------------------------------ MOVIMENTO
+     Derivato dal sito. Una sola curva per tutto: parte veloce e si posa piano. */
+  --se-ease: cubic-bezier(.22, .8, .2, 1);
+  --se-durata-breve: .3s;    /* hover, colori */
+  --se-durata-media: .5s;    /* card, cursori, testata */
+  --se-durata-lunga: 1.2s;   /* zoom delle foto */
+
   --se-shadow-sm: 0 1px 2px rgba(164, 56, 46, .10);
   --se-shadow-md: 0 10px 30px rgba(164, 56, 46, .14);
+  --se-shadow-lg: 0 30px 60px -20px rgba(80, 25, 18, .35);  /* barra prenota, card in hover */
 }
 
 /* ===================================================================== BASE */
@@ -141,9 +151,13 @@ a  { color: var(--se-cotto); text-underline-offset: 3px; }
 .se-lead  { font-size: var(--se-fs-lead); line-height: 1.5; font-weight: var(--se-fw-medium); }
 .se-small { font-size: var(--se-fs-small); color: var(--se-fg-muted); }
 
-/* Etichetta: maiuscolo spaziato, come il payoff CAMPING VILLAGE. */
+/* Etichetta (pretitolo): maiuscolo spaziato come il payoff CAMPING VILLAGE,
+   preceduta dal sole del logo, tinto col colore del testo. --nuda la toglie. */
 .se-etichetta {
-  display: inline-block; font-weight: var(--se-fw-bold);
+  display: inline-flex; align-items: center; gap: 10px; font-weight: var(--se-fw-bold);
   font-size: var(--se-fs-label); text-transform: uppercase; letter-spacing: var(--se-ls-label);
-  color: var(--se-fg-accent); margin-bottom: var(--se-space-3);
+  color: var(--se-fg-accent); margin: 0 0 var(--se-space-5);
 }
+.se-etichetta::before { content: ""; width: 18px; aspect-ratio: 1; flex: none; background: currentColor; translate: 0 -1px;
+  -webkit-mask: url('./img/sole.svg') center / contain no-repeat; mask: url('./img/sole.svg') center / contain no-repeat; }
+.se-etichetta--nuda::before { display: none; }

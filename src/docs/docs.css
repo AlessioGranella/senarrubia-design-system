@@ -142,3 +142,4 @@
 .dx-pacchetto p { margin: 0; font-size: var(--se-fs-small); color: var(--se-fg-muted); }
 .dx-archi-demo { position: relative; overflow: hidden; border-radius: var(--se-radius-lg); aspect-ratio: 16 / 9;
   display: grid; place-content: center; text-align: center; margin-bottom: var(--se-space-4); }
+.dx-demo .se-card-foto { width: 280px; }

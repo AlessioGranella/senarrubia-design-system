@@ -1,7 +1,15 @@
 export * from './tokens';
 export { asset, assetUrl } from './asset';
+export { MOTORE, linkMotore, type Ricerca } from './motore';
 export { Logo, Pittogramma } from './components/Logo';
 export { Icona, ICONE, type NomeIcona } from './components/Icona';
-export { Fascia, type FondoFascia } from './components/Fascia';
-export { SchedaSistemazione } from './components/SchedaSistemazione';
 export { IconaServizio, SERVIZI, RIFIUTI, type NomeServizio } from './components/IconaServizio';
+export { IconaDotazione, DOTAZIONI, INTERFACCIA, type NomeDotazione } from './components/IconaDotazione';
+export { Etichetta } from './components/Etichetta';
+export { Bottone, LinkFreccia, type VarianteBottone } from './components/Bottone';
+export { Fascia, type FondoFascia } from './components/Fascia';
+export { Contatore, Segmento, Chip, Tratti } from './components/Controlli';
+export { Prenota } from './components/Prenota';
+export { SchedaSistemazione, CardFoto, Dati3, type DatiSistemazione } from './components/SchedaSistemazione';
+export { InBreve, Ambiente, GrigliaIcone, Sapere, Orari } from './components/Dettaglio';
+export { Testata, Pannello } from './components/Sezioni';

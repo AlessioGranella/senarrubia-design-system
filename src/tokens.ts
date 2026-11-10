@@ -55,6 +55,20 @@ export const font = {
   logotipo: 'Signika (personalizzato, in curve)',              // ◆ p.12 — solo nel logo
 } as const;
 
+/** Derivato dal sito (nov 2026): movimento e misure della testata. */
+export const movimento = {
+  ease: 'cubic-bezier(.22, .8, .2, 1)',
+  durataBreve: 0.3,   // s — hover, colori
+  durataMedia: 0.5,   // s — card, cursori, testata
+  durataLunga: 1.2,   // s — zoom delle foto
+} as const;
+
+export const layout = {
+  container: 1320,    // px
+  testataH: 88,       // px
+  logoTestata: 112,   // px di larghezza
+} as const;
+
 export const marchio = {
   minimoStampaMm: 20,     // ◆ p.14 — 2 cm di larghezza
   minimoSchermoPx: 60,    // ◆ p.14 — 60 px di larghezza

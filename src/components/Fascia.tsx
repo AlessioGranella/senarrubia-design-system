@@ -1,12 +1,13 @@
 import type { CSSProperties, ReactNode } from "react";
 
 
-export type FondoFascia = 'bianco' | 'sabbia' | 'acqua' | 'minio' | 'cotto' | 'cielo';
+export type FondoFascia = 'bianco' | 'sabbia' | 'sabbia-piena' | 'acqua' | 'minio' | 'cotto' | 'cielo';
 
 /**
  * Fascia a tutta larghezza con contenitore condiviso.
  * Su minio e cotto il testo passa a bianco. `archi` aggiunge gli anelli
- * delle copertine del brandbook (solo su minio e sabbia, ◆ p.1, 4).
+ * delle copertine del brandbook (solo su fondi pieni, ◆ p.1, 4).
+ * `sabbia` è la sabbia velata del sito; `sabbia-piena` il colore pieno del brandbook.
  */
 export function Fascia({ fondo = 'bianco', centrata = false, archi = false, children }: {
   fondo?: FondoFascia; centrata?: boolean; archi?: boolean; children: ReactNode;

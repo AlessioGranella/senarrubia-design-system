@@ -11,6 +11,10 @@ Design system di **S'Ena Arrubia Camping Village** (Arborea), cliente DROP. Trad
   gli zip li genera `scripts/pacchetti.sh` (pre dev/build) e non vanno in repo. `originali/` = PDF+EPS del cliente (gli .ai restano fuori).
 - Online: https://alessiogranella.github.io/senarrubia-design-system/ (deploy a ogni push su main).
 - Icone servizi (24) e rifiuti (6): `scripts/icone_mappa.py` le legge dagli esecutivi `../S'EA_Mappa A3/` e `../Flyer/` → `public/brand/icone/servizi/`.
+- Icone dotazioni (45, al tratto): sprite `public/brand/icone/dotazioni.svg`, file singoli con `scripts/dotazioni.py`.
+- Componenti: presi dal sito `../Sito/sito-bozza` (nov 2026). Il sito usa gli stessi componenti SENZA prefisso
+  (`btn`, `card-s`, `alloggio`…): se cambi un componente qui, riporta la modifica anche là, e viceversa.
+- Motore di prenotazione: `src/motore.ts` (`linkMotore`). MyGuestCare non si tocca.
 
 ## Regole non negoziabili
 1. Palette ◆: minio #D85844, sabbia #EBC6A4 (primari), cotto #A4382E, bianco (secondari), acqua #D9EEF6, cielo #79CADB (terziari). Nero solo logo mono + testo corrente.
@@ -19,7 +23,8 @@ Design system di **S'Ena Arrubia Camping Village** (Arborea), cliente DROP. Trad
 4. Il logo si usa intero, dai file di `public/brand/loghi/`, nella versione indicata per il fondo (◆ p.19-20).
    Mai logotipo senza pittogramma (◆ p.11). Min 60 px / 2 cm (◆ p.14). Rispetto = altezza di CAMPING.
 5. Minio non regge testo piccolo (3,9:1). Mai testo bianco su cielo o sabbia.
-6. Icone: solo quelle del brand (sole, pittogramma, stelle + servizi della mappa), mai ridisegnate né mescolate a set generici. Le icone servizi sono multi-tono: `<img>`, non si ritingono.
+6. Icone: solo quelle del brand (sole, pittogramma, stelle + servizi della mappa + dotazioni al tratto), mai ridisegnate né mescolate a set generici. Le icone servizi sono multi-tono: `<img>`, non si ritingono. Le dotazioni sono in currentColor e servono solo per le caratteristiche degli alloggi e l'interfaccia.
+7. Pretitolo = `.se-etichetta`, sempre col sole del logo davanti. Bottone minio (`se-btn--pieno`) solo per prenotare.
 
 ## Gotcha
 - Gli SVG di Illustrator hanno i colori in `<style>` (.cls-N): PyMuPDF li ignora. `marchio.py` li porta in `fill` inline.

@@ -2,6 +2,7 @@ import { asset } from '../../asset';
 import { palette, type NomeColore } from '../../tokens';
 import { Icona } from '../../components/Icona';
 import { IconaServizio, SERVIZI, RIFIUTI } from '../../components/IconaServizio';
+import { IconaDotazione, DOTAZIONI, INTERFACCIA } from '../../components/IconaDotazione';
 import { Codice } from '../Codice';
 import { Tessera } from '../Tessera';
 
@@ -24,7 +25,7 @@ export function Icone() {
             le immagini profilo. Ogni file si scarica in SVG vettoriale e in PNG trasparente.
           </p>
           <p>
-            <a className="se-bottone" href={asset('brand/zip/senarrubia-icone.zip')} download>Scarica tutte le icone (ZIP)</a>
+            <a className="se-btn se-btn--scuro" href={asset('brand/zip/senarrubia-icone.zip')} download>Scarica tutte le icone (ZIP)</a>
           </p>
         </div>
         <div className="dx-note dx-note--derivato">
@@ -122,6 +123,31 @@ export function Icone() {
       </section>
 
       <section className="dx-section">
+        <h2>Dotazioni degli alloggi</h2>
+        <p>
+          ★ Icone al tratto per le caratteristiche delle sistemazioni (persone, m², letti, aria condizionata, bagno…)
+          e per l'interfaccia del sito. Il brandbook non le ha: sono state disegnate per il sito nel novembre 2026, su
+          griglia 24, tratto 1,6, angoli arrotondati. Il colore arriva da <code>currentColor</code>: minio sulle schede,
+          cotto nei quadrati acqua. Si usano solo per le dotazioni; per i servizi del campeggio restano le icone multi-tono.
+        </p>
+        <div className="dx-griglia" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))' }}>
+          {DOTAZIONI.map(n => (
+            <div key={n} className="dx-tessera">
+              <div className="dx-tessera__fondo" style={{ background: '#fff', color: 'var(--se-cotto)', aspectRatio: '1', display: 'grid', placeItems: 'center' }}><IconaDotazione nome={n} dimensione={40} /></div>
+              <div className="dx-tessera__meta"><span style={{ fontSize: 12 }}>{n}</span>
+                <span className="dx-scarica"><a href={asset(`brand/icone/dotazioni/${n}.svg`)} download>SVG</a><a href={asset(`brand/icone/dotazioni/${n}.png`)} download>PNG</a></span></div>
+            </div>
+          ))}
+        </div>
+        <h3>Interfaccia</h3>
+        <div className="dx-demo dx-row" style={{ color: 'var(--se-cotto)' }}>
+          {INTERFACCIA.map(n => <span key={n} style={{ display: 'grid', justifyItems: 'center', gap: 6, fontSize: 12 }}><IconaDotazione nome={n} dimensione={28} />{n}</span>)}
+        </div>
+        <Codice>{`<⟦IconaDotazione⟧ nome="clima" />                 {/* 24 px, colore da color: */}
+<svg class="⟦se-ic⟧"><use href="brand/icone/⟦dotazioni.svg#clima⟧"/></svg>`}</Codice>
+      </section>
+
+      <section className="dx-section">
         <h2>Regole</h2>
         <div className="dx-do-dont">
           <div className="dx-do"><h4>Sì</h4><ul>
@@ -129,11 +155,12 @@ export function Icone() {
             <li>Un solo colore della palette per icona, scelto per contrasto col fondo.</li>
             <li>Il sole come «firma» piccola in un angolo delle foto social (◆ p.27).</li>
             <li>Icone dei servizi per mappe, segnaletica, schede sistemazione, pagine servizi del sito.</li>
+            <li>Icone delle dotazioni, al tratto, per le caratteristiche degli alloggi e per l'interfaccia.</li>
           </ul></div>
           <div className="dx-dont"><h4>No</h4><ul>
             <li>Riempire il sole, cambiarne il numero di raggi o lo spessore.</li>
             <li>Sole bianco su sabbia o su acqua, sole sabbia su bianco piccolo: non si vede.</li>
-            <li>Mescolare queste icone con set generici (Material, Font Awesome). Se manca un servizio, si disegna nello stesso stile, non si prende altrove.</li>
+            <li>Mescolare queste icone con set generici (Material, Font Awesome). Se manca un servizio o una dotazione, si disegna nello stesso stile, non si prende altrove.</li>
             <li>Ritingere le icone dei servizi in un colore solo: perdono le campiture.</li>
           </ul></div>
         </div>
